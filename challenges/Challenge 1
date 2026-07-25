@@ -1,0 +1,43 @@
+Cloud Environment Setup & Troubleshooting Journal 🚀
+
+​Executive Summary
+​During the setup phase of the AWS Cloud Project Bootcamp, two major infrastructure blockages occurred: a platform transition restriction on Gitpod and an AWS CloudShell account verification hold. This documentation details the root causes and the step-by-step resolution by migrating to GitHub Codespaces and configuring the AWS CLI directly in the cloud container.
+
+​1. Problem Breakdown & Root Causes
+
+​Incident 1: Gitpod Subscription Lockout
+​Issue:
+Attempting to launch a workspace in Gitpod resulted in a subscription/paywall barrier (rebranded as Ona).
+​Root Cause:   Platform model changes removed the previous free tier for cloud workspace creation.
+​Impact:       Inability to rely on .gitpod.yml for automated extension installations and workspace provisioning.
+​Incident 2: AWS CloudShell Verification Hold
+
+​Issue:   AWS CloudShell returned the error:
+Unable to create the environment. Your account verification is in progress...
+​Root Cause:    New AWS account security checks temporarily restricted browser-based CloudShell provisioning.
+​Impact:     Unable to run aws terminal commands directly within the AWS Management Console UI.
+​2. Solution & Resolution Path
+
+​To maintain project momentum without incurring subscription costs or waiting for CloudShell verification:
+​Platform Migration: Switched the development environment to GitHub Codespaces (providing free monthly container computing hours).
+​Manual Tooling Integration: Installed required extensions (e.g., 42Crunch OpenAPI) directly via the VS Code Extensions Marketplace (Ctrl+Shift+X).
+​Direct CLI Installation in Codespaces: Bypassed AWS CloudShell entirely by installing the AWS CLI directly into the Linux container terminal in Codespaces
+
+​3. Step-by-Step Execution Guide
+
+​Step 1: Launch GitHub Codespaces
+​Open the GitHub repository.
+​Click Code > Codespaces > Create codespace on main.
+
+​Step 2: Install AWS CLI (Linux Terminal Commands)
+​Run the following commands sequentially inside the Codespace terminal 
+
+# 1. Download the AWS CLI Linux zip package
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
+# 2. Extract the archive
+unzip awscliv2.zip
+
+# 3. Run the installer with superuser privileges
+sudo ./aws/install
+
