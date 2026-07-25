@@ -41,3 +41,13 @@ unzip awscliv2.zip
 # 3. Run the installer with superuser privileges
 sudo ./aws/install
 
+# Confirm CLI installation
+aws --version
+
+# Configure access keys (AWS Access Key ID, Secret Access Key, Region)
+aws configure
+
+4. Key Takeaways & Lessons Learned
+​Cloud Runtimes are Linux-Native: Regardless of the local host OS (e.g., Windows), cloud development environments execute inside Linux containers. Command execution must target Linux binaries (curl, bash, unzip).
+​Tooling Independence: AWS CloudShell is merely one access interface. Running the AWS CLI directly inside an IDE terminal provides greater session stability and reflects real-world DevOps practices.
+​Platform Adaptability: Cloud platforms frequently change configuration standards and pricing models. Technical resilience depends on understanding underlying abstractions (containers, terminals, and APIs) rather than relying strictly on single-platform workflows.
