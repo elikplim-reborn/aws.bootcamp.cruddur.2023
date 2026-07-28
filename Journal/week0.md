@@ -9,8 +9,51 @@ Here is the multi-tier web architecture I designed using Lucidchart.
 
 
 ## ☁️ AWS Setup & Billing
-This week, I set up my AWS Management Console and configured foundational Identity and Access Management (IAM) settings for secure access control. I also familiarized myself with AWS billing tools to monitor usage and avoid unexpected costs.
+This week, I set up my AWS Management Console and configured foundational Identity and Access Management (IAM) settings for secure access control. I also familiarized myself with AWS billing tools to monitor usage and avoid unexpected costs.##
 
-## 📓 Next Steps
-Moving forward, I will translate this blueprint into actual infrastructure code.
+##Automating AWS Cost Limits via CLI
+​Automating AWS Cost Management by defining budget policies in JSON and deploying them directly via the AWS CLI inside GitHub Codespaces.
+
+​Configuration Files 
+
+##Notification Rules (aws/notifications-with-subscribers.json)
+​Triggers an email alert when actual spend crosses 80% of the threshold.[
+  {
+    "Notification": {
+      "ComparisonOperator": "GREATER_THAN",
+      "NotificationType": "ACTUAL",
+      "Threshold": 80,
+      "ThresholdType": "PERCENTAGE"
+    },
+    "Subscribers": [
+      {
+        "Address": "kkweku713@gmail.com",
+        "SubscriptionType": "EMAIL"
+      }
+    ]
+  }
+]
+
+##Budget Policy (aws/budget.json)
+Sets up a monthly cost limit capped at $1 USD.
+{
+  "BudgetLimit": {
+    "Amount": "1",
+    "Unit": "USD"
+  },
+  "BudgetName": "Example Tag Budget",
+  "BudgetType": "COST",
+  "TimeUnit": "MONTHLY"
+}
+
+
+##CLI Deployment Command
+# Fetch active AWS Account ID and deploy
+export ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+
+aws budgets create-budget \
+  --account-id $ACCOUNT_ID \
+  --budget file://aws/budget.json \
+  --notifications-with-subscribers file://aws/notifications-with-subscribers.json
+
 
