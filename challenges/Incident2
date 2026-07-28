@@ -1,0 +1,17 @@
+##Issue 1: Environment Isolation & Credential Persistence
+
+The Problem: Migrating workspace environments from Gitpod to GitHub Codespaces caused AWS credentials to drop across new terminal sessions, forcing re-authentication.
+The Solution: Configured AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_DEFAULT_REGION directly inside GitHub Secrets (Settings -> Secrets and variables -> Codespaces). This ensured credentials persist seamlessly whenever the container rebuilds. 
+
+##Issue 2: The Silent Command Misunderstanding
+
+The Problem: After running aws budgets create-budget, the terminal returned a blank prompt with no confirmation message. Coming from a beginner perspective, silence felt like a failed execution.
+The Solution: Learned that in Linux and AWS CLI standards, "no news is good news." Verified the successful build by executing aws budgets describe-budgets --account-id $ACCOUNT_ID, which returned the full JSON output of the live budget.
+
+##Issue 3: Console Visibility & IAM Billing Restrictions
+
+​The Problem: The CLI command executed successfully, but opening the AWS Web Console showed an empty budget list under the IAM user.
+​The Solution: Learned that AWS restricts IAM billing visibility by default—even for accounts with administrative access. Enabled IAM User Access to Billing Information under the AWS Root account settings, allowing financial data to populate on the web dashboard.
+​Reflection
+
+​Every error message was simply the CLI pointing out a missing piece of context. Seeing Example Tag Budget and My Zero-Spend Budget active in both the terminal and the web console made working through every path fix and syntax error worth it.
