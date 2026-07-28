@@ -1,6 +1,5 @@
-Cloud Environment Setup & Troubleshooting Journal 🚀
+Cloud Environment Setup & Troubleshooting Challenge
 
-​Executive Summary
 ​During the setup phase of the AWS Cloud Project Bootcamp, two major infrastructure blockages occurred: a platform transition restriction on Gitpod and an AWS CloudShell account verification hold. This documentation details the root causes and the step-by-step resolution by migrating to GitHub Codespaces and configuring the AWS CLI directly in the cloud container.
 
 ​1. Problem Breakdown & Root Causes
