@@ -17,7 +17,9 @@ This week, I set up my AWS Management Console and configured foundational Identi
 ​Configuration Files 
 
 ##Notification Rules (aws/notifications-with-subscribers.json)
-​Triggers an email alert when actual spend crosses 80% of the threshold.[
+​Triggers an email alert when actual spend crosses 80% of the threshold.
+
+{```json
   {
     "Notification": {
       "ComparisonOperator": "GREATER_THAN",
@@ -33,6 +35,7 @@ This week, I set up my AWS Management Console and configured foundational Identi
     ]
   }
 ]
+}
 
 
 ![A screenshot of the notification in my github workspace](<img width="1366" height="768" alt="notification_in_CLI" src="https://github.com/user-attachments/assets/c2bd4804-a59a-47a1-a3bc-08ef59236dbd" />
@@ -41,6 +44,8 @@ This week, I set up my AWS Management Console and configured foundational Identi
 
 ##Budget Policy (aws/budget.json)
 Sets up a monthly cost limit capped at $1 USD.
+
+```json
 {
     "BudgetLimit": {
         "Amount": "1",
