@@ -27,7 +27,7 @@ This week, I set up my AWS Management Console and configured foundational Identi
     },
     "Subscribers": [
       {
-        "Address": "kkweku713@gmail.com",
+        "Address": "kkwe******@gmail.com",
         "SubscriptionType": "EMAIL"
       }
     ]
@@ -121,7 +121,11 @@ By creating a secret in the repo to store the data
 Check that the AWS CLI is working and you are the expected user
 
 $aws sts get-caller-identity (INPUT)
-
+{
+    "UserId": "AIDAXS56W3MLUDP5JLWAG",
+    "Account": "5217016******",
+    "Arn": "arn:aws:iam::5217016*****:user/General-Reborn"
+}
 
 
 
