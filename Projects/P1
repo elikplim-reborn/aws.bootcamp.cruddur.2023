@@ -1,1 +1,30 @@
-b
+###Deploying a Static Website on AWS S3 (https://elikplim-reborn.s3.eu-north-1.amazonaws.com/index_files/index.html)
+
+​##Overview
+
+​This project illustrates deploying a static website using Amazon Simple Storage Service, configuring the environment for public access, and resolving associated permission challenges.
+​Process
+
+​#Repository Setup: Initialized the project with an index.html file and an html folder dedicated to storing images and assets.
+​
+#Bucket Configuration: Created an S3 bucket to house the website files and enabled static website hosting in the properties.
+​
+#Permission Management: Configured Access Control Lists and applied a JSON bucket policy to ensure the content could be read publicly.
+​Challenges Encountered
+​
+#Access Control Lists (ACLs): Initially, the required ACLs were not enabled, resulting in access errors. Activating them was essential for public visibility.
+​
+#JSON Bucket Policy: The JSON bucket policy had to be precisely defined to grant explicit permission for retrieving objects. Implementing the correct syntax resolved the final access issues.
+__JSON__ 
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadOnlyAccess",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::elikplim-reborn/*"
+        }
+    ]
+}
